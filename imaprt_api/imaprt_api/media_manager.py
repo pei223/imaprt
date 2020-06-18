@@ -3,6 +3,7 @@ import numpy as np
 from django.conf import settings
 from pathlib import Path
 from .utils import *
+from PIL import Image
 
 
 def clear_images_regularly():
@@ -18,13 +19,26 @@ def uploaded_file_name(file) -> str:
 
 
 def uploaded_file_to_cvimage(file) -> np.ndarray:
-    return cv2.imdecode(np.fromstring(file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
+    image = cv2.imdecode(np.fromstring(file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
+    if image.ndim == 2:
+        image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
+    return image
 
 
 def save_image(file_path: str, image: np.ndarray):
     if not Path(settings.MEDIA_ROOT).exists():
         Path(settings.MEDIA_ROOT).mkdir()
-    cv2.imwrite(f"{settings.MEDIA_ROOT}/{file_path}", image)
+    # PILに合わせる
+    if image.ndim == 3:
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    elif image.ndim == 4:
+        cv2.cvtColor(image, cv2.COLOR_BGRA2RGBA)
+    Image.fromarray(image).save(f"{settings.MEDIA_ROOT}/{file_path}")
+
+
+@async_func
+def save_image_async(file_path: str, image: np.ndarray):
+    save_image(file_path, image)
 
 
 def generate_filepath_for_display(filename: str) -> str:

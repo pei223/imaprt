@@ -21,8 +21,13 @@ def create(params: Dict) -> BaseFilter:
         return Median(params)
     elif method_name == "sharp":
         return Sharp(params)
+
     elif method_name == "sobel":
         return Sobel(params)
+    elif method_name == "laplacian":
+        return Laplacian(params)
+    elif method_name == "canny":
+        return Canny(params)
 
     elif method_name == "gray_scale":
         return GrayScale()
@@ -33,5 +38,8 @@ def create(params: Dict) -> BaseFilter:
         return Closing(params)
     elif method_name == "opening":
         return Opening(params)
+
+    elif method_name == "bilateral":
+        return Bilateral(params)
 
     raise RuntimeError(f"無効なメソッド名: {method_name}")

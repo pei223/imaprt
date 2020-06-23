@@ -8,3 +8,6 @@ from .closing import Closing
 from .opening import Opening
 from .sobel import Sobel
 from .binarize_otsu import BinarizeOtsu
+from .laplacian import Laplacian
+from .canny import Canny
+from .bilateral import Bilateral

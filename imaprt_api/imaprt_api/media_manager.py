@@ -29,11 +29,13 @@ def save_image(file_path: str, image: np.ndarray):
     if not Path(settings.MEDIA_ROOT).exists():
         Path(settings.MEDIA_ROOT).mkdir()
     # PILに合わせる
+    mode = "RGB"
     if image.ndim == 3:
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     elif image.ndim == 4:
-        cv2.cvtColor(image, cv2.COLOR_BGRA2RGBA)
-    Image.fromarray(image).save(f"{settings.MEDIA_ROOT}/{file_path}")
+        mode = "RGBA"
+        image = cv2.cvtColor(image, cv2.COLOR_BGRA2RGBA)
+    Image.fromarray(image).convert(mode).save(f"{settings.MEDIA_ROOT}/{file_path}")
 
 
 @async_func

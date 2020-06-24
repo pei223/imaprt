@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
-from typing import List, Dict
+from typing import List
 
 import numpy as np
-import cv2
+from ..help import ArgInfo
 
 
 class BaseFilter(metaclass=ABCMeta):
@@ -16,4 +16,19 @@ class BaseFilter(metaclass=ABCMeta):
 
     @abstractmethod
     def generate_code(self) -> str:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def overview() -> str:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def method_name() -> str:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def args_info() -> List[ArgInfo]:
         pass

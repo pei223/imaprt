@@ -15,31 +15,31 @@ def create(params: Dict) -> BaseFilter:
     if method_name is None:
         raise ParseError(f"フィルター名が必要")
 
-    if method_name == "gaussian":
+    if method_name == Gaussian.method_name():
         return Gaussian(params)
-    elif method_name == "median":
+    elif method_name == Median.method_name():
         return Median(params)
-    elif method_name == "sharp":
+    elif method_name == Sharp.method_name():
         return Sharp(params)
 
-    elif method_name == "sobel":
+    elif method_name == Sobel.method_name():
         return Sobel(params)
-    elif method_name == "laplacian":
+    elif method_name == Laplacian.method_name():
         return Laplacian(params)
-    elif method_name == "canny":
+    elif method_name == Canny.method_name():
         return Canny(params)
 
-    elif method_name == "gray_scale":
+    elif method_name == GrayScale.method_name():
         return GrayScale()
-    elif method_name == "binarize_otsu":
+    elif method_name == BinarizeOtsu.method_name():
         return BinarizeOtsu()
 
-    elif method_name == "closing":
+    elif method_name == Closing.method_name():
         return Closing(params)
-    elif method_name == "opening":
+    elif method_name == Opening.method_name():
         return Opening(params)
 
-    elif method_name == "bilateral":
+    elif method_name == Bilateral.method_name():
         return Bilateral(params)
 
     raise RuntimeError(f"無効なメソッド名: {method_name}")

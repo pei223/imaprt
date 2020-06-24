@@ -1,9 +1,10 @@
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import cv2
 
 from . import BaseFilter, GrayScale
+from ..help import ArgInfo
 
 
 class Opening(BaseFilter):
@@ -35,3 +36,17 @@ img = cv2.morphologyEx(img, cv2.MORPH_OPEN, np.ones(({kernel_size}, {kernel_size
 
         return "# Opening\nimg = cv2.morphologyEx(img, cv2.MORPH_OPEN, np.ones(({kernel_size}, {kernel_size}), np.uint8))".format(
             gray_scale_code=GrayScale().generate_code(), kernel_size=self._kernel_size)
+
+    @staticmethod
+    def overview() -> str:
+        return "画像縮小後に拡大してサイズをもとに戻すことでノイズを除去する"
+
+    @staticmethod
+    def method_name() -> str:
+        return "opening"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("kernel_size", "int", "拡大・縮小のカーネルサイズ"),
+        ]

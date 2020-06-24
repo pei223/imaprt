@@ -1,7 +1,9 @@
+from typing import List
 import numpy as np
 import cv2
 
 from . import BaseFilter
+from ..help import ArgInfo
 
 
 class Origin(BaseFilter):
@@ -13,3 +15,17 @@ class Origin(BaseFilter):
 
     def generate_code(self):
         return ""
+
+    @staticmethod
+    def overview() -> str:
+        return ""
+
+    @staticmethod
+    def method_name() -> str:
+        return ""
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("k", "int", "協調パラメータ")
+        ]

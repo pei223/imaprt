@@ -1,0 +1,14 @@
+.hide{
+    display: none;
+}
+
+.headerarea {
+}
+
+.contentarea{
+    padding: 15px
+}
+
+.helplistarea {
+    border-bottom: 1px solid #aaaaaa
+}

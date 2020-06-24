@@ -1,9 +1,10 @@
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import cv2
 
 from . import BaseFilter
+from ..help import ArgInfo
 
 
 class Sharp(BaseFilter):
@@ -33,3 +34,17 @@ kernel = np.array(
     [[-{k} / 9, -{k} / 9, -{k} / 9], [-{k} / 9, 1 + 8 * {k} / 9, -{k} / 9],
      [-{k} / 9, -{k} / 9, -{k} / 9]], np.float32)
 img = cv2.filter2D(img, -1, kernel).astype("uint8")""".format(k=self._k)
+
+    @staticmethod
+    def overview() -> str:
+        return "ノイズ混入するがエッジ強調"
+
+    @staticmethod
+    def method_name() -> str:
+        return "sharp"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("k", "int", "協調パラメータ")
+        ]

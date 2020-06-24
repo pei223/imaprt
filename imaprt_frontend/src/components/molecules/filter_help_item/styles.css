@@ -1,0 +1,31 @@
+.container {
+    padding: 20px;
+    border-top: 1px solid silver;
+}
+
+.filtername {
+    margin: 0px;
+    cursor: pointer;
+}
+
+.overview {
+    font-size: 0.75em;
+    border-radius: 5px;
+    margin-top: 0px;
+    padding: 10px;
+    background-color: #e7f2fa;
+    word-wrap: break-word;
+}
+
+.detailarea {
+    padding: 15px;
+}
+
+.argsarea {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.headline {
+    margin-bottom: 0px;
+}

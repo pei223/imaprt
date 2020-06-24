@@ -3,6 +3,7 @@
 
 <img src="images/result.png" width="512" />
 <img src="images/generate_code.png" width="512" />
+<img src="images/help.png" width="512" />
 
 
 ## ローカル実行

@@ -1,9 +1,10 @@
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import cv2
 
 from . import BaseFilter
+from ..help import ArgInfo
 
 
 class Median(BaseFilter):
@@ -23,3 +24,17 @@ class Median(BaseFilter):
 
     def generate_code(self):
         return "# メディアンフィルタ\nimg = cv2.medianBlur(img, {})".format(str(self._kernel_size))
+
+    @staticmethod
+    def overview() -> str:
+        return "ノイズ除去"
+
+    @staticmethod
+    def method_name() -> str:
+        return "median"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("kernel_size", "odd int", "カーネルサイズ"),
+        ]

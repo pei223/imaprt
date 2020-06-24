@@ -20,11 +20,15 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 use: 'ts-loader',
             },
+            {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader?modules'],
+            }
         ],
     },
     resolve: {
         extensions: [
-            '.ts', '.tsx', '.js', '.jsx',
+            '.ts', '.tsx', '.js', '.jsx', '.css'
         ],
     },
 

@@ -1,9 +1,10 @@
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import cv2
 
 from . import BaseFilter
+from ..help import ArgInfo
 
 
 class Gaussian(BaseFilter):
@@ -32,3 +33,18 @@ class Gaussian(BaseFilter):
         return "# ガウシアンフィルタ\nimg = cv2.GaussianBlur(img, ({}, {}), {})".format(str(self._kernel_size),
                                                                                str(self._kernel_size),
                                                                                str(self._sigma))
+
+    @staticmethod
+    def overview() -> str:
+        return "ノイズ除去"
+
+    @staticmethod
+    def method_name() -> str:
+        return "gaussian"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("sigma", "float or int", "標準偏差"),
+            ArgInfo("kernel_size", "odd int", "カーネルサイズ"),
+        ]

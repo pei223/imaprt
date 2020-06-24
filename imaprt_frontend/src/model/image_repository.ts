@@ -30,4 +30,9 @@ export default class ImageRepository {
         let result = await axios.post(url, formData, config)
         return result
     }
+
+    async getFilterHelpList() {
+        let result = await axios.get("/imaprt_api/help_list", {}, config)
+        return result
+    }
 }

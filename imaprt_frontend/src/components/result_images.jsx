@@ -49,7 +49,7 @@ export default function ResultImages(props) {
     } else {
         imageNodes = props.data.map((data) => {
             return (
-                <Grid item xs={zoomLevel}>
+                <Grid item xs={zoomLevel} key={data.url}>
                     <img src={API_URL + data.url} className={classes.image} />
                     <p className={classes.description}>{data.title}<br/>{data.description}</p>
                 </Grid>

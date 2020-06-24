@@ -9,6 +9,7 @@ import traceback
 
 from .models import *
 from . import media_manager
+from .models.filtering.help import filter_help_service
 
 KEY_FILTER_PARAMS = "filter_params"
 
@@ -81,6 +82,11 @@ def filter_batch(request):
     image_info_ls, code_generator = filtering_service.apply_batch_filtering(origin_image, origin_file_name,
                                                                             filtering_ls)
     return Response(arrange_response(image_info_ls, code_generator), status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def help_list(request):
+    return Response({"filter_help_list": filter_help_service.generate_help_json()})
 
 
 def arrange_response(filter_image_info_ls: List[FilterImageInfo], code_generator: CodeGenerator) -> Dict:

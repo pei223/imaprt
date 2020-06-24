@@ -1,10 +1,11 @@
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import cv2
 
 from . import BaseFilter
 from ..validation_util import *
+from ..help import ArgInfo
 
 
 class Laplacian(BaseFilter):
@@ -21,3 +22,17 @@ class Laplacian(BaseFilter):
 
     def generate_code(self):
         return f"# ラプラシアンフィルタ\nimg = cv2.Laplacian(img, cv2.CV_64F, {self._kernel_size}).astype(\"uint8\")"
+
+    @staticmethod
+    def overview() -> str:
+        return "エッジ検出フィルタ"
+
+    @staticmethod
+    def method_name() -> str:
+        return "laplacian"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("kernel_size", "odd int", "カーネルサイズ"),
+        ]

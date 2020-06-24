@@ -5,6 +5,7 @@ import cv2
 
 from . import BaseFilter
 from ..validation_util import *
+from ..help import ArgInfo
 
 
 class Canny(BaseFilter):
@@ -28,3 +29,18 @@ class Canny(BaseFilter):
 
     def generate_code(self):
         return f"# Canny\nimg = cv2.Canny(img, {self._lower_threshold}, {self._upper_threshold}).astype(\"uint8\")"
+
+    @staticmethod
+    def overview() -> str:
+        return "エッジ検出フィルタ"
+
+    @staticmethod
+    def method_name() -> str:
+        return "canny"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("lower_threshold", "int(0～255)", "閾値下限"),
+            ArgInfo("upper_threshold", "int(0～255)", "閾値上限")
+        ]

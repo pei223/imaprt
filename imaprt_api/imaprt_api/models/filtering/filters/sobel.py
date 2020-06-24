@@ -1,9 +1,10 @@
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import cv2
 
 from . import BaseFilter
+from ..help import ArgInfo
 
 
 class Sobel(BaseFilter):
@@ -26,3 +27,17 @@ class Sobel(BaseFilter):
         comment = "Scharrフィルタ" if self._kernel_size == -1 else "Sobelフィルタ"
         return "# {comment}\nimg = ((abs(cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize={kernel_size})) + abs(cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize={kernel_size}))) // 2).astype('uint8')".format(
             kernel_size=self._kernel_size, comment=comment)
+
+    @staticmethod
+    def overview() -> str:
+        return "エッジ検出フィルタ"
+
+    @staticmethod
+    def method_name() -> str:
+        return "sobel"
+
+    @staticmethod
+    def args_info() -> List[ArgInfo]:
+        return [
+            ArgInfo("kernel_size", "odd int", "カーネルサイズ　-1にすることでscharrフィルタになる"),
+        ]

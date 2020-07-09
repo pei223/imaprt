@@ -24,8 +24,6 @@ SECRET_KEY = 'xj8vj0!0phhpeqjythwt7))jd50fstvbo1wot2k&+*b22bfh7k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -104,10 +102,6 @@ REST_FRAMEWORK = {
     'NON_FIELD_ERRORS_KEY': 'detail',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8081',
-]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

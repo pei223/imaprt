@@ -20,7 +20,7 @@ python manage.py runserver --settings=config.prod_settings
 
 ## 本番デプロイ
 ```
-gunicorn --env DJANGO_SETTINGSMODULE=config.prod_settings config.wsgi:application --bind localhost:8000 -w 5 --threads 5
+gunicorn --env DJANGO_SETTINGSMODULE=config.prod_settings config.wsgi:application --bind <IP Address>:8000 -w 5 --threads 5 -D --log-syslog --access-logfile access.log --log-file error.log
 ```
 
 

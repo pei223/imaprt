@@ -4,7 +4,13 @@ from .common_settings import *
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+# TODO フロントエンドデプロイ先のIP/Port指定
+ALLOWED_HOSTS = []
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8081',
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

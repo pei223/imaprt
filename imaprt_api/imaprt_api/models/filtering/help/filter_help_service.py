@@ -2,8 +2,8 @@ from typing import Dict, List
 
 from ..filters import *
 
-filter_class_list = [Bilateral, BinarizeOtsu, Canny, Closing, Gaussian, GrayScale, Laplacian, Median, Opening, Sharp,
-                     Sobel]
+filter_class_list = [Bilateral, BinarizeAdaptive, BinarizeOtsu, BinarizeThreshold, BitReverse, Canny, Closing, Gaussian,
+                     GrayScale, Laplacian, Median, Opening, Sharp, Sobel, BitReverse]
 
 
 def generate_help_json() -> List[Dict]:

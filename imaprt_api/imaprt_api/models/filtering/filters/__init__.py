@@ -11,3 +11,6 @@ from .binarize_otsu import BinarizeOtsu
 from .laplacian import Laplacian
 from .canny import Canny
 from .bilateral import Bilateral
+from .bit_reverse import BitReverse
+from .binarize_adaptive import BinarizeAdaptive
+from .binarize_threshold import BinarizeThreshold
